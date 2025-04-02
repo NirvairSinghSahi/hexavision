@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import Header from "./components/Header";
-import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
-import Showcase from "./components/Showcase";
-import CollectionSection from "./components/CollectionSection";
-import FindMyHexa from "./components/FindMyHexa";
-import Footer from "./components/Footer";
+import Header from "../components/Header";
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
+import Showcase from "../components/Showcase";
+import CollectionSection from "../components/CollectionSection";
+import FindMyHexa from "../components/FindMyHexa";
+import Footer from "../components/Footer";
 
-const App = () => {
+function CollectionsPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const collections = [
@@ -78,10 +78,7 @@ const App = () => {
     <>
       <Header openSidebar={() => setSidebarOpen(true)} />
       <Navbar />
-      <Sidebar
-        isOpen={sidebarOpen}
-        closeSidebar={() => setSidebarOpen(false)}
-      />
+      <Sidebar isOpen={sidebarOpen} closeSidebar={() => setSidebarOpen(false)} />
       <Showcase />
       {collections.map((col, i) => (
         <CollectionSection key={i} {...col} />
@@ -90,6 +87,6 @@ const App = () => {
       <Footer />
     </>
   );
-};
+}
 
-export default App;
+export default CollectionsPage;

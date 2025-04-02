@@ -137,55 +137,66 @@ function App() {
       </section>
 
       <footer className="footer">
-        <div className="footer-container">
-          <div className="footer-language">
-            <span>Change Language</span>
-            <p>ENGLISH</p>
-            <div className="golden-line"></div>
-          </div>
-          <div className="footer-columns">
-            <div className="footer-column">
-              <h3>SERVICES</h3>
-              <ul>
-                <li><a href="#">Schedule an Appointment</a></li>
-                <li><a href="#">Request Assistance</a></li>
-                <li><a href="#">Subscribe to Newsletters</a></li>
-                <li><a href="#">Explore our Catalog</a></li>
-              </ul>
-            </div>
-            <div className="footer-column">
-              <h3>CORPORATE</h3>
-              <ul>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Philanthropy</a></li>
-              </ul>
-            </div>
-            <div className="footer-column">
-              <h3>LEGAL TERMS</h3>
-              <ul>
-                <li><a href="#">Terms of Use</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Cookie Notice</a></li>
-                <li><a href="#">Supply Chain</a></li>
-                <li><a href="#">Accessibility</a></li>
-              </ul>
-            </div>
-            <div className="footer-social">
-              <h3>FOLLOW US</h3>
-              <div className="social-icons">
-                {["facebook.png", "instagram.png", "twitter.png", "linkedin.png", "youtube.png"].map((icon, idx) => (
-                  <a href="#" key={idx}>
-                    <img src={image(icon)} alt="social-icon" />
-                  </a>
-                ))}
+            <div className="footer-container">
+              <div className="footer-language">
+                <span>Change Language</span>
+                <p>ENGLISH</p>
+                <div className="golden-line"></div>
+              </div>
+              <div className="footer-columns">
+                <div className="footer-column">
+                  <h3>SERVICES</h3>
+                  <ul>
+                    <li><a href="#">Schedule an Appointment</a></li>
+                    <li><a href="#">Request Assistance</a></li>
+                    <li><a href="#">Subscribe to Newsletters</a></li>
+                    <li><a href="#">Explore our Catalog</a></li>
+                  </ul>
+                </div>
+                <div className="footer-column">
+                  <h3>CORPORATE</h3>
+                  <ul>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Philanthropy</a></li>
+                  </ul>
+                </div>
+                <div className="footer-column">
+                  <h3>LEGAL TERMS</h3>
+                  <ul>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Notice</a></li>
+                    <li><a href="#">Supply Chain</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                  </ul>
+                </div>
+                <div className="footer-social">
+                  <h3>FOLLOW US</h3>
+                  <div className="social-icons">
+                    <a href="https://www.facebook.com/story.php/?story_fbid=1670602513233142&id=1670578309902229&_rdr">
+                      <img src={image("facebook.png")} alt="Facebook" />
+                    </a>
+                    <a href="https://www.instagram.com/hexavision_enhancement/">
+                      <img src={image("instagram.png")} alt="Instagram" />
+                    </a>
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2Fhexacc">
+                      <img src={image("twitter.png")} alt="Twitter" />
+                    </a>
+                    <a href="https://www.linkedin.com/company/joinhexa">
+                      <img src={image("linkedin.png")} alt="LinkedIn" />
+                    </a>
+                    <a href="https://www.youtube.com/channel/UC98o6FhZ1cfsNxGN3Cf_0bQ">
+                      <img src={image("youtube.png")} alt="YouTube" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="footer-bottom">
+                <p>Hexa Vision, Inc. 2024</p>
               </div>
             </div>
-          </div>
-          <div className="footer-bottom">
-            <p>Hexa Vision, Inc. 2024</p>
-          </div>
-        </div>
-      </footer>
+          </footer>
+
     </>
   );
 }

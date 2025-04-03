@@ -38,8 +38,8 @@ function HomePage() {
       <nav className="custom-navbar sticky-top">
         <a href="/" className="nav-link">THE HOUSE</a>
         <a href="collections" className="nav-link">HIGH JEWELRY</a>
-        <a href="#" className="nav-link">ENGAGEMENT & BRIDAL</a>
-        <a href="#" className="nav-link">WATCHES</a>
+        <a href="" className="nav-link">ENGAGEMENT & BRIDAL</a>
+        <a href="/watches" className="nav-link">WATCHES</a>
         <a href="#" className="nav-link">ACCESSORIES</a>
         <a href="#" className="nav-link">SERVICES</a>
       </nav>

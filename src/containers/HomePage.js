@@ -37,21 +37,19 @@ function HomePage() {
 
       <nav className="custom-navbar sticky-top">
         <a href="/" className="nav-link">THE HOUSE</a>
-        <a href="collections" className="nav-link">HIGH JEWELRY</a>
-        <a href="" className="nav-link">ENGAGEMENT & BRIDAL</a>
+        <a href="/collections" className="nav-link">HIGH JEWELRY</a>
+        <a href="/engagement" className="nav-link">ENGAGEMENT & BRIDAL</a>
         <a href="/watches" className="nav-link">WATCHES</a>
-        <a href="#" className="nav-link">ACCESSORIES</a>
-        <a href="#" className="nav-link">SERVICES</a>
+        <a href="/services" className="nav-link">SERVICES</a>
       </nav>
 
       <div id="sidebar" className="sidebar">
         <span className="close-btn" onClick={closeSidebar}>&times;</span>
-        <a href="#">THE HOUSE</a>
-        <a href="#">HIGH JEWELRY</a>
-        <a href="#">ENGAGEMENT AND BRIDAL</a>
-        <a href="#">WATCHES</a>
-        <a href="#">ACCESSORIES</a>
-        <a href="#">SERVICES</a>
+        <a href="/">THE HOUSE</a>
+        <a href="/collections">HIGH JEWELRY</a>
+        <a href="/engagement">ENGAGEMENT AND BRIDAL</a>
+        <a href="/watches">WATCHES</a>
+        <a href="/services">SERVICES</a>
       </div>
 
       <section className="house-section">

@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Showcase from "./components/Showcase";
+import InspiredGallery from "./components/InspiredGallery"; // ✅ New gallery
 import CollectionSection from "./components/CollectionSection";
 import FindMyHexa from "./components/FindMyHexa";
 import Footer from "./components/Footer";
@@ -83,6 +84,7 @@ const App = () => {
         closeSidebar={() => setSidebarOpen(false)}
       />
       <Showcase />
+      <InspiredGallery /> {/* ✅ New Elegant Gallery Section */}
       {collections.map((col, i) => (
         <CollectionSection key={i} {...col} />
       ))}

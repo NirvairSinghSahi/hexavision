@@ -1,0 +1,384 @@
+/* NirvairSinghSahi.css */
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&display=swap');
+
+/* Custom styles for header */
+.custom-header {
+  background-color: #f7e9d1;
+  text-align: center;
+  padding: 5px 0;
+  font-family: 'EB Garamond', serif;
+  position: relative;
+  z-index: 1000;
+}
+.custom-header h1 {
+  font-weight: 600;
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+.divider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.divider-line {
+  border-top: 1px solid #d3a35e;
+  margin: 5px 20px;
+  flex: 1;
+}
+.logo-container {
+  display: inline-block;
+  padding: 5px;
+}
+
+/* Navbar */
+.custom-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  background-color: #f7e9d1;
+  font-family: 'EB Garamond', serif;
+  text-align: center;
+  padding: 10px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.nav-link {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+  margin: 0 15px;
+  display: inline-block;
+  position: relative;
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+.nav-link::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #d3a35e;
+  margin-top: 5px;
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+/* Mobile menu icon */
+.mobile-menu-icon {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .divider-container,
+  .logo-container,
+  .custom-navbar {
+    display: none;
+  }
+  .mobile-menu-icon {
+    display: inline-block;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+}
+
+/* Sidebar */
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #808080;
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 60px;
+  z-index: 1001;
+}
+.sidebar a {
+  padding: 8px 16px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-family: 'EB Garamond', serif;
+  color: #000;
+  display: block;
+  transition: 0.3s;
+}
+.sidebar a:hover {
+  color: #d3a35e;
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* House Section */
+.house-section {
+  text-align: center;
+  font-family: 'EB Garamond', serif;
+  padding: 20px;
+}
+.image-container img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.golden-line {
+  width: 80em;
+  height: 2px;
+  background-color: #d3a35e;
+  margin: 15px auto;
+}
+.house-section h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #000;
+  margin-top: 20px;
+}
+.house-section p {
+  font-size: 1rem;
+  color: #555;
+  max-width: 600px;
+  margin: 10px auto 0;
+  line-height: 1.5;
+}
+@media (max-width: 768px) {
+  .image-container img {
+    height: 400px;
+  }
+  .house-section h2 {
+    font-size: 1.5rem;
+  }
+  .house-section p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Dual Section Card Styles */
+.dual-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 30px;
+  padding: 40px 20px;
+}
+.card {
+  flex: 1 1 45%;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-10px);
+}
+.card-image-container {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.card-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.card:hover .card-image-container img {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+.card h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 10px 0;
+}
+.card p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+.discover-link {
+  font-weight: bold;
+  color: #d3a35e;
+  text-decoration: none;
+}
+.discover-link:hover {
+  text-decoration: underline;
+}
+@media (max-width: 768px) {
+  .dual-section {
+    flex-direction: column;
+    padding: 20px 10px;
+  }
+  .card {
+    flex: 1 1 100%;
+  }
+}
+
+/* Individual Full-Width Section */
+.individual-section {
+  text-align: center;
+  padding: 40px 20px;
+}
+.individual-image-container {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.individual-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.individual-section:hover .individual-image-container img {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+.individual-content h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.individual-content p {
+  font-size: 1rem;
+  color: #777;
+  max-width: 600px;
+  margin: 20px auto;
+  line-height: 1.6;
+}
+.discover-btn {
+  display: inline-block;
+  padding: 10px 30px;
+  font-size: 1rem;
+  color: #d3a35e;
+  border: 2px solid #d3a35e;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.discover-btn:hover {
+  background-color: #d3a35e;
+  color: #fff;
+}
+
+/* Savoir-Faire Section */
+.savoir-section {
+  text-align: center;
+  padding: 40px 20px;
+}
+.savoir-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.savoir-content {
+  flex: 1 1 50%;
+  padding: 20px;
+}
+.savoir-content h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.savoir-content p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.savoir-image-container {
+  flex: 1 1 50%;
+  padding: 20px;
+}
+.savoir-image-container img {
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.savoir-bottom-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 40px;
+}
+.savoir-bottom-line .golden-line {
+  flex: 1;
+  height: 2px;
+}
+.rosette-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Find My Hexa Vision */
+.hexa-vision-section {
+  text-align: center;
+  padding: 40px 20px;
+}
+.hexa-vision-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hexa-vision-image-container {
+  flex: 1 1 45%;
+  padding: 10px;
+}
+.hexa-vision-image-container img {
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.hexa-vision-content {
+  flex: 1 1 45%;
+  text-align: left;
+  padding: 10px;
+}
+.hexa-vision-content h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.hexa-vision-content p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+@media (max-width: 768px) {
+  .savoir-container,
+  .hexa-vision-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hexa-vision-content {
+    text-align: center;
+  }
+}

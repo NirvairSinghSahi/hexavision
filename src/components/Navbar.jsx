@@ -1,17 +1,18 @@
 import React from "react";
 
+const navItems = [
+  { label: "THE HOUSE", link: "/" },
+  { label: "HIGH JEWELRY", link: "/collections" },
+  { label: "ENGAGEMENT & BRIDAL", link: "/engagement" },
+  { label: "WATCHES", link: "/watches" },
+  { label: "SERVICES", link: "/services" },
+];
+
 const Navbar = () => (
   <nav className="custom-navbar sticky-top">
-    {[
-      "THE HOUSE",
-      "HIGH JEWELRY",
-      "ENGAGEMENT & BRIDAL",
-      "WATCHES",
-      "ACCESSORIES",
-      "SERVICES",
-    ].map((item) => (
-      <a href="#" className="nav-link" key={item}>
-        {item}
+    {navItems.map((item) => (
+      <a href={item.link} className="nav-link" key={item.label}>
+        {item.label}
       </a>
     ))}
   </nav>

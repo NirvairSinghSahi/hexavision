@@ -7,6 +7,8 @@ import InspiredGallery from "../components/InspiredGallery";
 import CollectionSection from "../components/CollectionSection";
 import FindMyHexa from "../components/FindMyHexa";
 import Footer from "../components/Footer";
+import JewelryCatalog from "../components/JewelryCatalog";
+import "../mete.css";
 
 const CollectionsPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -88,6 +90,7 @@ const CollectionsPage = () => {
       {collections.map((col, i) => (
         <CollectionSection key={i} {...col} />
       ))}
+      <JewelryCatalog />
       <FindMyHexa />
       <Footer />
     </>

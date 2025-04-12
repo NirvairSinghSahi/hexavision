@@ -3,11 +3,14 @@ import Header from "../components/Header";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Showcase from "../components/Showcase";
+import InspiredGallery from "../components/InspiredGallery";
 import CollectionSection from "../components/CollectionSection";
 import FindMyHexa from "../components/FindMyHexa";
 import Footer from "../components/Footer";
+import JewelryCatalog from "../components/JewelryCatalog";
+import "../mete.css";
 
-function CollectionsPage() {
+const CollectionsPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const collections = [
@@ -78,15 +81,20 @@ function CollectionsPage() {
     <>
       <Header openSidebar={() => setSidebarOpen(true)} />
       <Navbar />
-      <Sidebar isOpen={sidebarOpen} closeSidebar={() => setSidebarOpen(false)} />
+      <Sidebar
+        isOpen={sidebarOpen}
+        closeSidebar={() => setSidebarOpen(false)}
+      />
       <Showcase />
+      <InspiredGallery />
       {collections.map((col, i) => (
         <CollectionSection key={i} {...col} />
       ))}
+      <JewelryCatalog />
       <FindMyHexa />
       <Footer />
     </>
   );
-}
+};
 
 export default CollectionsPage;

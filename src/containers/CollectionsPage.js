@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Showcase from "../components/Showcase";
-import InspiredGallery from "../components/InspiredGallery";
 import CollectionSection from "../components/CollectionSection";
 import FindMyHexa from "../components/FindMyHexa";
 import Footer from "../components/Footer";
-import JewelryCatalog from "../components/JewelryCatalog";
 import "../mete.css";
+
+const JewelryCatalog = lazy(() => import("../components/JewelryCatalog"));
 
 const CollectionsPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -86,11 +86,12 @@ const CollectionsPage = () => {
         closeSidebar={() => setSidebarOpen(false)}
       />
       <Showcase />
-      <InspiredGallery />
+      <Suspense fallback={<div>Loading jewelry...</div>}>
+        <JewelryCatalog />
+      </Suspense>
       {collections.map((col, i) => (
         <CollectionSection key={i} {...col} />
       ))}
-      <JewelryCatalog />
       <FindMyHexa />
       <Footer />
     </>

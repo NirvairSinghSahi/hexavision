@@ -127,7 +127,6 @@ const ServicesPage = () => {
                 <a href="/collections">HIGH JEWELRY</a>
                 <a href="/engagement">ENGAGEMENT & BRIDAL</a>
                 <a href="/watches">WATCHES</a>
-                <a href="#">ACCESSORIES</a>
                 <a href="/services">SERVICES</a>
             </div>
 

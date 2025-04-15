@@ -382,3 +382,37 @@
     text-align: center;
   }
 }
+
+.jewelry-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.jewelry-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  max-width: 250px;
+  background: #fffaf5;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  border-radius: 8px;
+}
+
+.art-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.art-card {
+  width: 250px;
+  background-color: #fffaf5;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+}

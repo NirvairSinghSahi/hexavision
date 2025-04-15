@@ -5,6 +5,14 @@ import Navbar from "../components/Navbar";
 
 function HomePage() {
   const [showMore, setShowMore] = useState(false);
+  const [jewelryItems, setJewelryItems] = useState([]);
+const [loadingJewelry, setLoadingJewelry] = useState(false);
+const [showJewelry, setShowJewelry] = useState(false);
+const [designArt, setDesignArt] = useState([]);
+const [loadingDesign, setLoadingDesign] = useState(false);
+const [showDesignArt, setShowDesignArt] = useState(false);
+
+
   useEffect(() => {
   const handleResize = () => {
     if (window.innerWidth > 768) {
@@ -33,6 +41,45 @@ const closeSidebar = () => {
 
 
   const image = (name) => `${process.env.PUBLIC_URL}/Nirvair_Singh_Sahi_Images/${name}`;
+  const fetchJewelryData = async () => {
+    setLoadingJewelry(true);
+    setShowJewelry(true);
+    try {
+      const response = await fetch("https://fakestoreapi.com/products/category/jewelery");
+      const data = await response.json();
+      setJewelryItems(data);
+    } catch (error) {
+      console.error("Error fetching jewelry:", error);
+    } finally {
+      setLoadingJewelry(false);
+    }
+  };
+  const fetchDesignArt = async () => {
+    setLoadingDesign(true);
+    try {
+      const response = await fetch(
+        "https://api.artic.edu/api/v1/artworks/search?q=jewelry&limit=5&fields=id,title,image_id,artist_display"
+      );
+      const data = await response.json();
+  
+      const artworks = data.data
+        .filter((art) => art.image_id) // Only include items with images
+        .map((art) => ({
+          id: art.id,
+          title: art.title,
+          image: `https://www.artic.edu/iiif/2/${art.image_id}/full/843,/0/default.jpg`,
+          artist: art.artist_display,
+        }));
+  
+      setDesignArt(artworks);
+    } catch (error) {
+      console.error("Error fetching art data:", error);
+    } finally {
+      setLoadingDesign(false);
+      setShowDesignArt(true);
+    }
+  };
+  
 
   return (
     <>
@@ -118,7 +165,33 @@ const closeSidebar = () => {
             <p>{["Even every Hexa Vision jewel begins with a diamond or colored gemstone of exceptional quality...",
                   "At Hexa Vision, craftsmanship is a deeply cherished value. Each piece is expertly created...",
                   "The House of Hexa Vision has built a legacy defined by extraordinary jewelry and timepieces..."][index]}</p>
-            <a href="#" className="discover-btn">DISCOVER</a>
+            <button
+  className="discover-btn"
+  onClick={() => {
+    if (showDesignArt) {
+      setShowDesignArt(false);
+    } else {
+      fetchDesignArt();
+    }
+  }}
+>
+  {showDesignArt ? "Hide Art" : "DISCOVER"}
+</button>
+{loadingDesign && <p>Loading design inspirations...</p>}
+
+{showDesignArt && (
+  <div className="art-grid">
+    {designArt.map((item) => (
+      <div key={item.id} className="art-card">
+        <img src={item.image} alt={item.title} style={{ width: "100%", borderRadius: "8px" }} />
+        <h4>{item.title}</h4>
+        <p style={{ fontSize: "14px", color: "#555" }}>{item.artist}</p>
+      </div>
+    ))}
+  </div>
+)}
+
+
           </div>
         </section>
       ))}
@@ -132,7 +205,34 @@ const closeSidebar = () => {
               Hexa Vision Timepieces push creative bounds and underscore the
               House's commitment to only the exceptional.
             </p>
-            <a href="#" className="discover-btn">DISCOVER</a>
+            <button
+  onClick={() => {
+    if (showJewelry) {
+      setShowJewelry(false); // hide
+    } else {
+      fetchJewelryData(); // fetch + show
+    }
+  }}
+  className="discover-btn"
+>
+  {showJewelry ? "Hide Collection" : "DISCOVER"}
+</button>
+
+{loadingJewelry && <p>Loading jewelry...</p>}
+
+{showJewelry && jewelryItems.length > 0 && (
+  <div className="jewelry-grid">
+    {jewelryItems.map((item) => (
+      <div key={item.id} className="jewelry-card">
+        <img src={item.image} alt={item.title} style={{ width: "150px" }} />
+        <h4>{item.title}</h4>
+        <p>${item.price}</p>
+        <p>{item.description}</p>
+      </div>
+    ))}
+  </div>
+)}
+
           </div>
           <div className="savoir-image-container">
             <img src={image("sbs_l1_house_10.png")} alt="Savoir-Faire" />

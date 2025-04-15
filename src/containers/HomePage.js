@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../NirvairSinghSahi.css";
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
 
 function HomePage() {
+  const [showMore, setShowMore] = useState(false);
   useEffect(() => {
   const handleResize = () => {
     if (window.innerWidth > 768) {
@@ -11,6 +12,8 @@ function HomePage() {
       if (sidebar) sidebar.style.width = "0";
     }
   };
+
+
 
   window.addEventListener("resize", handleResize);
 
@@ -67,8 +70,19 @@ const closeSidebar = () => {
         <p>
           Founded in New York City in 1932, Hexa Vision continues to set the
           standard for the ultimate in fine jewelry and high-end watchmaking.
-          Learn more about our history, news, and global events.
         </p>
+
+        {showMore && (
+          <p>
+            With over 90 years of legacy, the House of Hexa Vision is known for crafting pieces that blend innovation with tradition. 
+            From timeless elegance to modern masterpieces, our creations speak to generations.
+          </p>
+        )}
+
+        <button onClick={() => setShowMore(!showMore)} className="discover-btn">
+          {showMore ? "Show Less" : "Learn More"}
+        </button>
+
       </section>
 
       {[...Array(3)].map((_, i) => (

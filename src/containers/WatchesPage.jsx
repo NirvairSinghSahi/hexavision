@@ -8,6 +8,14 @@ import "../AmirAlipour.css";
 const WatchesPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  const openSidebar = () => {
+    document.getElementById("sidebar").style.width = "250px";
+  };
+  
+  const closeSidebar = () => {
+    document.getElementById("sidebar").style.width = "0";
+  };
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries, observer) => {
@@ -152,6 +160,30 @@ const WatchesPage = () => {
   <>
   <Header openSidebar={() => setSidebarOpen(true)} />
   <Navbar />
+
+    {/* Mobile Header */}
+    <header className="mobile-header">
+                <h1>HEXA VISION</h1>
+                <span
+                    className="mobile-menu-icon"
+                    onClick={() => openSidebar()}
+                >
+                    &#9776;
+                </span>
+            </header>
+
+            {/* Sidebar */}
+            <div id="sidebar" className="sidebar">
+                <span className="close-btn" onClick={() => closeSidebar()}>
+                    &times;
+                </span>
+                <a href="/">THE HOUSE</a>
+                <a href="/collections">HIGH JEWELRY</a>
+                <a href="/engagement">ENGAGEMENT & BRIDAL</a>
+                <a href="/watches">WATCHES</a>
+                <a href="/services">SERVICES</a>
+            </div>
+
    <div className="main-content">
       <div className="image-section">
         <img src="AmirAlipour-images/0-hero.jpg" alt="Hexa Vision Watch" />

@@ -8,11 +8,40 @@ import '../BridalPage.css';
 function BridalPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  const openSidebar = () => {
+    document.getElementById("sidebar").style.width = "250px";
+  };
+  
+  const closeSidebar = () => {
+    document.getElementById("sidebar").style.width = "0";
+  };
+
   return (
     <>
       <Header openSidebar={() => setSidebarOpen(true)} />
       <Navbar />
-      <Sidebar isOpen={sidebarOpen} closeSidebar={() => setSidebarOpen(false)} />
+       {/* Mobile Header */}
+       <header className="mobile-header">
+                <h1>HEXA VISION</h1>
+                <span
+                    className="mobile-menu-icon"
+                    onClick={() => openSidebar()}
+                >
+                    &#9776;
+                </span>
+            </header>
+
+            {/* Sidebar */}
+            <div id="sidebar" className="sidebar">
+                <span className="close-btn" onClick={() => closeSidebar()}>
+                    &times;
+                </span>
+                <a href="/">THE HOUSE</a>
+                <a href="/collections">HIGH JEWELRY</a>
+                <a href="/engagement">ENGAGEMENT & BRIDAL</a>
+                <a href="/watches">WATCHES</a>
+                <a href="/services">SERVICES</a>
+            </div>
 
       <section id="engagement">
         <div className="hero"></div>

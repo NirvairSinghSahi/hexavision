@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../Servicesstyles.css";
 import LazyImage from "../components/LazyImage";
+import emailjs from '@emailjs/browser';
 
 const ServicesPage = () => {
     const [activeForm, setActiveForm] = useState("appointment");
@@ -44,65 +45,85 @@ const ServicesPage = () => {
 
     const handleAppointmentSubmit = (e) => {
         e.preventDefault();
-
+      
         const firstName = document.getElementById("first-name").value.trim();
         const lastName = document.getElementById("last-name").value.trim();
         const email = document.getElementById("email").value.trim();
         const phone = document.getElementById("phone").value.trim();
-
+      
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const phoneRegex = /^\+?\d{7,15}$/;
-
+      
         if (!firstName || !lastName || !email || !phone) {
-            alert("Please fill out all required fields.");
-            return;
+          alert("Please fill out all required fields.");
+          return;
         }
-
+      
         if (!emailRegex.test(email)) {
-            alert("Please enter a valid email address.");
-            return;
+          alert("Please enter a valid email address.");
+          return;
         }
-
+      
         if (!phoneRegex.test(phone)) {
-            alert("Please enter a valid phone number (7-15 digits).");
-            return;
+          alert("Please enter a valid phone number (7-15 digits).");
+          return;
         }
+      
+        emailjs
+          .sendForm(
+            "service_ml9fho8",
+            "template_irls43h",
+            e.target,
+            "TCeiZADLiObiz9wzv"
+          )
+          .then(() => {
+            alert("Appointment form submitted successfully!");
+            e.target.reset();
+          })
+          .catch((error) => {
+            console.error("Email sending error:", error);
+            alert("Failed to send appointment. Please try again later.");
+          });
+      };
 
-        alert("Appointment form submitted!");
-    };
-
-    const handleAssistanceSubmit = (e) => {
+      const handleAssistanceSubmit = (e) => {
         e.preventDefault();
-
+      
         const firstName = document
-            .getElementById("first-name-assistance")
-            .value.trim();
-        const lastName = document
-            .getElementById("last-name-assistance")
-            .value.trim();
+          .getElementById("first-name-assistance")
+          .value.trim();
+        const lastName = document.getElementById("last-name-assistance").value.trim();
         const email = document.getElementById("email-assistance").value.trim();
-        const phone = document.getElementById("phone-assistance").value.trim();
-
+        const details = document.getElementById("details").value.trim();
+      
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const phoneRegex = /^\+?\d{7,15}$/;
-
-        if (!firstName || !lastName || !email) {
-            alert("Please fill out all required fields.");
-            return;
+      
+        if (!firstName || !lastName || !email || !details) {
+          alert("Please fill out all required fields.");
+          return;
         }
-
+      
         if (!emailRegex.test(email)) {
-            alert("Please enter a valid email address.");
-            return;
+          alert("Please enter a valid email address.");
+          return;
         }
-
-        if (phone && !phoneRegex.test(phone)) {
-            alert("Please enter a valid phone number (7-15 digits).");
-            return;
-        }
-
-        alert("Assistance form submitted!");
-    };
+      
+        emailjs
+          .sendForm(
+            "service_ml9fho8",
+            "template_orz523c",
+            e.target,
+            "TCeiZADLiObiz9wzv"
+          )
+          .then(() => {
+            alert("Assistance request submitted successfully!");
+            e.target.reset();
+          })
+          .catch((error) => {
+            console.error("Email sending error:", error);
+            alert("Failed to send your request. Please try again later.");
+          });
+      };
     return (
         <>
             <Header />

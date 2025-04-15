@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import "../AmirAlipour.css";
+import LazyImage from "../components/LazyImage";
+
 
 const WatchesPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -186,7 +188,7 @@ const WatchesPage = () => {
 
    <div className="main-content">
       <div className="image-section">
-        <img src="AmirAlipour-images/0-hero.jpg" alt="Hexa Vision Watch" />
+        <LazyImage src="AmirAlipour-images/0-hero.jpg" alt="Hexa Vision Watch" />
       </div>
       <div className="text-section">
         <h1>Watches</h1>
@@ -203,7 +205,7 @@ const WatchesPage = () => {
       <div className="cards-section">
         {cardData1.map((card, i) => (
           <div className="card" key={i}>
-            <img src={card.img} alt={card.title} />
+            <LazyImage src={card.img} alt={card.title} />
             <h3>{card.title}</h3>
             <p>{card.text}</p>
           </div>
@@ -220,13 +222,13 @@ const WatchesPage = () => {
           </p>
           <button className="discover-button">Discover</button>
         </div>
-        <img src="AmirAlipour-images/3.avif" alt="Longevity" />
+        <LazyImage src="AmirAlipour-images/3.avif" alt="Longevity" />
       </div>
 
       <div className="cards-section">
         {cardData2.map((card, i) => (
           <div className="card" key={i}>
-            <img src={card.img} alt={card.title} />
+            <LazyImage src={card.img} alt={card.title} />
             <h3>{card.title}</h3>
             <p>{card.text}</p>
           </div>
@@ -234,7 +236,7 @@ const WatchesPage = () => {
       </div>
 
       <div className="latest-watch-section slide-in">
-        <img src="AmirAlipour-images/4.JPG" alt="Latest Watch" />
+        <LazyImage src="AmirAlipour-images/4.JPG" alt="Latest Watch" />
         <div className="latest-watch-text">
           <h3>Latest Watch Models</h3>
           <p>
@@ -255,11 +257,11 @@ const WatchesPage = () => {
           </p>
           <button className="discover-button">Discover</button>
         </div>
-        <img src="AmirAlipour-images/5.webp" alt="Savoir-Faire" />
+        <LazyImage src="AmirAlipour-images/5.webp" alt="Savoir-Faire" />
       </div>
 
       <div className="find-my-section slide-in">
-        <img src="AmirAlipour-images/6.webp" alt="Find My Hexa Vision" />
+        <LazyImage src="AmirAlipour-images/6.webp" alt="Find My Hexa Vision" />
         <div className="find-my-text">
           <h3>Find My Hexa Vision</h3>
           <p>

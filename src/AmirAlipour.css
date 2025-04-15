@@ -491,3 +491,12 @@ body {
     opacity: 1;
     transform: translateX(0);
   }
+  .fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+  }
+  
+  .fade-out {
+    opacity: 0;
+  }
+  

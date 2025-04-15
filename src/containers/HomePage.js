@@ -1,59 +1,113 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../NirvairSinghSahi.css";
+import Header from "../components/Header";
+import Navbar from "../components/Navbar";
 
 function HomePage() {
-  const openSidebar = () => {
-    document.getElementById("sidebar").style.width = "250px";
+  const [showMore, setShowMore] = useState(false);
+  const [jewelryItems, setJewelryItems] = useState([]);
+const [loadingJewelry, setLoadingJewelry] = useState(false);
+const [showJewelry, setShowJewelry] = useState(false);
+const [designArt, setDesignArt] = useState([]);
+const [loadingDesign, setLoadingDesign] = useState(false);
+const [showDesignArt, setShowDesignArt] = useState(false);
+
+
+  useEffect(() => {
+  const handleResize = () => {
+    if (window.innerWidth > 768) {
+      const sidebar = document.getElementById("sidebar");
+      if (sidebar) sidebar.style.width = "0";
+    }
   };
 
-  const closeSidebar = () => {
-    document.getElementById("sidebar").style.width = "0";
+
+
+  window.addEventListener("resize", handleResize);
+
+  handleResize();
+
+  return () => {
+    window.removeEventListener("resize", handleResize);
   };
+}, []);
+const openSidebar = () => {
+  document.getElementById("sidebar").style.width = "250px";
+};
+
+const closeSidebar = () => {
+  document.getElementById("sidebar").style.width = "0";
+};
+
 
   const image = (name) => `${process.env.PUBLIC_URL}/Nirvair_Singh_Sahi_Images/${name}`;
+  const fetchJewelryData = async () => {
+    setLoadingJewelry(true);
+    setShowJewelry(true);
+    try {
+      const response = await fetch("https://fakestoreapi.com/products/category/jewelery");
+      const data = await response.json();
+      setJewelryItems(data);
+    } catch (error) {
+      console.error("Error fetching jewelry:", error);
+    } finally {
+      setLoadingJewelry(false);
+    }
+  };
+  const fetchDesignArt = async () => {
+    setLoadingDesign(true);
+    try {
+      const response = await fetch(
+        "https://api.artic.edu/api/v1/artworks/search?q=jewelry&limit=5&fields=id,title,image_id,artist_display"
+      );
+      const data = await response.json();
+  
+      const artworks = data.data
+        .filter((art) => art.image_id) // Only include items with images
+        .map((art) => ({
+          id: art.id,
+          title: art.title,
+          image: `https://www.artic.edu/iiif/2/${art.image_id}/full/843,/0/default.jpg`,
+          artist: art.artist_display,
+        }));
+  
+      setDesignArt(artworks);
+    } catch (error) {
+      console.error("Error fetching art data:", error);
+    } finally {
+      setLoadingDesign(false);
+      setShowDesignArt(true);
+    }
+  };
+  
 
   return (
     <>
-      <header className="custom-header">
-        <span className="mobile-menu-icon" onClick={openSidebar}>&#9776;</span>
-        <h1>HEXA-VISION</h1>
-        <div className="divider-container">
-          <div className="divider-line"></div>
-          <div className="logo-container">
-          <svg
-  xmlns="http://www.w3.org/2000/svg"
-  width="50"
-  height="50"
-  viewBox="0 0 28 43"
-  fillRule="evenodd"
->
-  <path d="M20.63 0H7.198L6.17.426.427 6.14 0 7.164v28.183l.427 1.023 5.744 5.716 1.027.424H20.68l1.026-.424 5.742-5.716.428-1.023V7.164L27.45 6.14 21.708.426 20.682 0h-.052zm-.054.526l.838.343 5.592 5.568.344.832v27.97l-.344.833-5.592 5.568-.838.342H7.305l-.838-.342-5.592-5.568-.348-.833V7.27l.348-.832L6.467.87l.838-.343h13.27zm-2.3 9.382l.014-.005c.053 0 .095-.04.095-.092V9.7c0-.05-.042-.093-.095-.093h-.43V9.6h-1.275v.003h-.437c-.054 0-.095.04-.095.093v.1c0 .05.04.095.095.095l.013.005c.232 0 .42.186.42.416l.005-.018V14.2h-.005c0 .257-.17.46-.386.48h-4.5c-.206-.018-.372-.2-.386-.45V10.3a.42.42 0 0 1 .418-.391l.014-.005c.054 0 .096-.04.096-.092V9.7c0-.05-.042-.093-.096-.093h-.43V9.6h-1.274v.003H9.6c-.054 0-.095.04-.095.093v.1c0 .05.04.095.095.095l.013.005a.42.42 0 0 1 .419.416l.004-.018-.004 9.673a.42.42 0 0 1-.419.416L9.6 20.4c-.054 0-.095.04-.095.093v.1c0 .048.04.092.095.092h.436v.002h1.705c.054 0 .096-.042.096-.093v-.1c0-.053-.042-.096-.096-.096h-.014a.42.42 0 0 1-.418-.39v-4.236c.014-.218.15-.398.33-.44h4.62c.2.045.332.24.332.474l.005-.012v4.2l-.005-.02c0 .23-.187.416-.42.416l-.013.007c-.054 0-.095.04-.095.093v.1c0 .048.04.092.095.092h.437v.002h1.706c.053 0 .095-.042.095-.093v-.1c0-.053-.042-.096-.095-.096h-.014a.42.42 0 0 1-.417-.4V10.3c.01-.217.194-.4.417-.4M21.8 23.34h-1.97a.1.1 0 0 0-.096.096v.1c0 .053.046.093.096.093l.35.003h.054c.18 0 .2.057.1.327l-3.04 7.46s-.066.15-.194.15c-.115 0-.194-.123-.2-.147l-1.876-4.142 1.386-3.45s.1-.23.6-.23l.114-.002c.053 0 .095-.04.095-.096v-.1c0-.05-.042-.093-.095-.093H15.12c-.05 0-.094.044-.094.093v.1c0 .054.043.096.094.096l.35.002h.054c.182 0 .202.057.093.328l-.945 2.328c-.014.018-.036.038-.07.038s-.064-.03-.074-.048L13.43 23.83c-.13-.233-.05-.23.125-.23h.28l.2-.002c.05 0 .095-.04.095-.096v-.1c0-.05-.044-.093-.095-.093h-2.7c-.054 0-.1.044-.1.093v.1c0 .054.046.096.1.096l.114.002c.372 0 .47.242.47.242l1.975 4.307-1.362 3.348c-.035.04-.098.1-.173.1-.12 0-.175-.153-.175-.153s-.007.007-.015.02L8.4 24.116c-.087-.212-.27-.502-.096-.502h.28l.2-.002c.053 0 .098-.04.098-.096v-.1c0-.05-.045-.093-.098-.093H6.088c-.05 0-.094.044-.094.093v.1c0 .054.042.096.094.096l.116.002c.368 0 .467.242.467.242L11.93 34.3l.017.043s.034.06.088.06.1-.013.118-.06v.01l2.14-5.322 2.398 5.23.027.08s.03.058.087.058.1-.012.122-.062c.003-.005.01-.025.014-.052l4.138-10.4s.093-.23.594-.23l.114-.003c.05 0 .094-.04.094-.093v-.1c0-.05-.044-.096-.094-.096m-1.27-21.525l-.436-.002H7.36l-5.513 5.5v27.858l5.513 5.5h13.158l5.512-5.5V7.325L20.518 1.84zm4.34 32.43v.382l-4.82 4.797H7.86L3.04 34.65V7.765l4.82-4.798h12.178l4.82 4.798V34.27z" />
-</svg>
+      <Header />
+      <Navbar />
 
-          </div>
-          <div className="divider-line"></div>
-        </div>
-      </header>
+            {/* Mobile Header */}
+            <header className="mobile-header">
+                <h1>HEXA VISION</h1>
+                <span
+                    className="mobile-menu-icon"
+                    onClick={() => openSidebar()}
+                >
+                    &#9776;
+                </span>
+            </header>
 
-      <nav className="custom-navbar sticky-top">
-        <a href="/" className="nav-link">THE HOUSE</a>
-        <a href="collections" className="nav-link">HIGH JEWELRY</a>
-        <a href="" className="nav-link">ENGAGEMENT & BRIDAL</a>
-        <a href="/watches" className="nav-link">WATCHES</a>
-        <a href="#" className="nav-link">ACCESSORIES</a>
-        <a href="#" className="nav-link">SERVICES</a>
-      </nav>
-
-      <div id="sidebar" className="sidebar">
-        <span className="close-btn" onClick={closeSidebar}>&times;</span>
-        <a href="#">THE HOUSE</a>
-        <a href="#">HIGH JEWELRY</a>
-        <a href="#">ENGAGEMENT AND BRIDAL</a>
-        <a href="#">WATCHES</a>
-        <a href="#">ACCESSORIES</a>
-        <a href="#">SERVICES</a>
-      </div>
-
+            {/* Sidebar */}
+            <div id="sidebar" className="sidebar">
+                <span className="close-btn" onClick={() => closeSidebar()}>
+                    &times;
+                </span>
+                <a href="/">THE HOUSE</a>
+                <a href="/collections">HIGH JEWELRY</a>
+                <a href="/engagement">ENGAGEMENT & BRIDAL</a>
+                <a href="/watches">WATCHES</a>
+                <a href="/services">SERVICES</a>
+            </div>
       <section className="house-section">
         <div className="image-container">
           <img src={image("1-a3728410.png")} alt="The House of Hexa Vision" />
@@ -63,8 +117,19 @@ function HomePage() {
         <p>
           Founded in New York City in 1932, Hexa Vision continues to set the
           standard for the ultimate in fine jewelry and high-end watchmaking.
-          Learn more about our history, news, and global events.
         </p>
+
+        {showMore && (
+          <p>
+            With over 90 years of legacy, the House of Hexa Vision is known for crafting pieces that blend innovation with tradition. 
+            From timeless elegance to modern masterpieces, our creations speak to generations.
+          </p>
+        )}
+
+        <button onClick={() => setShowMore(!showMore)} className="discover-btn">
+          {showMore ? "Show Less" : "Learn More"}
+        </button>
+
       </section>
 
       {[...Array(3)].map((_, i) => (
@@ -100,7 +165,33 @@ function HomePage() {
             <p>{["Even every Hexa Vision jewel begins with a diamond or colored gemstone of exceptional quality...",
                   "At Hexa Vision, craftsmanship is a deeply cherished value. Each piece is expertly created...",
                   "The House of Hexa Vision has built a legacy defined by extraordinary jewelry and timepieces..."][index]}</p>
-            <a href="#" className="discover-btn">DISCOVER</a>
+            <button
+  className="discover-btn"
+  onClick={() => {
+    if (showDesignArt) {
+      setShowDesignArt(false);
+    } else {
+      fetchDesignArt();
+    }
+  }}
+>
+  {showDesignArt ? "Hide Art" : "DISCOVER"}
+</button>
+{loadingDesign && <p>Loading design inspirations...</p>}
+
+{showDesignArt && (
+  <div className="art-grid">
+    {designArt.map((item) => (
+      <div key={item.id} className="art-card">
+        <img src={item.image} alt={item.title} style={{ width: "100%", borderRadius: "8px" }} />
+        <h4>{item.title}</h4>
+        <p style={{ fontSize: "14px", color: "#555" }}>{item.artist}</p>
+      </div>
+    ))}
+  </div>
+)}
+
+
           </div>
         </section>
       ))}
@@ -114,7 +205,34 @@ function HomePage() {
               Hexa Vision Timepieces push creative bounds and underscore the
               House's commitment to only the exceptional.
             </p>
-            <a href="#" className="discover-btn">DISCOVER</a>
+            <button
+  onClick={() => {
+    if (showJewelry) {
+      setShowJewelry(false); // hide
+    } else {
+      fetchJewelryData(); // fetch + show
+    }
+  }}
+  className="discover-btn"
+>
+  {showJewelry ? "Hide Collection" : "DISCOVER"}
+</button>
+
+{loadingJewelry && <p>Loading jewelry...</p>}
+
+{showJewelry && jewelryItems.length > 0 && (
+  <div className="jewelry-grid">
+    {jewelryItems.map((item) => (
+      <div key={item.id} className="jewelry-card">
+        <img src={item.image} alt={item.title} style={{ width: "150px" }} />
+        <h4>{item.title}</h4>
+        <p>${item.price}</p>
+        <p>{item.description}</p>
+      </div>
+    ))}
+  </div>
+)}
+
           </div>
           <div className="savoir-image-container">
             <img src={image("sbs_l1_house_10.png")} alt="Savoir-Faire" />

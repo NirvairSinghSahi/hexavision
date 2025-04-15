@@ -5,7 +5,6 @@ const navItems = [
   { label: "HIGH JEWELRY", link: "/collections" },
   { label: "ENGAGEMENT & BRIDAL", link: "/engagement" },
   { label: "WATCHES", link: "/watches" },
-  { label: "ACCESSORIES", link: "/accessories" },
   { label: "SERVICES", link: "/services" },
 ];
 

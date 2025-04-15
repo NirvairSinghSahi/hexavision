@@ -165,7 +165,7 @@ const WatchesPage = () => {
 
     {/* Mobile Header */}
     <header className="mobile-header">
-                {/* <h1>HEXA VISION</h1> */}
+                <h1>HEXA VISION</h1>
                 <span
                     className="mobile-menu-icon"
                     onClick={() => openSidebar()}

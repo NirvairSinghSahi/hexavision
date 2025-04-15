@@ -1,10 +1,11 @@
 import React from "react";
+import LazyImage from "./LazyImage";
 
 const CollectionSection = ({ title, img, desc, subsOnly, subs }) => (
   <section className="collections">
     {!subsOnly && (
       <div className="collection">
-        <img src={img} alt={title} />
+        <LazyImage src={img} alt={title} />
         <h2>{title}</h2>
         <p>{desc}</p>
         <button>DISCOVER</button>
@@ -14,7 +15,7 @@ const CollectionSection = ({ title, img, desc, subsOnly, subs }) => (
       <div className="sub-collections">
         {subs.map((sub, i) => (
           <div className="sub-collection-item" key={i}>
-            <img src={sub.img} alt={sub.title} />
+            <LazyImage src={sub.img} alt={sub.title} />
             <h3>{sub.title}</h3>
             <p>{sub.desc}</p>
           </div>

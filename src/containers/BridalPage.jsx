@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import '../BridalPage.css';
+import LazyImage from "../components/LazyImage";
 
 function BridalPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -63,7 +64,7 @@ function BridalPage() {
             { src: "Khant_images/turquoise.avif", title: "Emerald Bands", text: "Timeless elegance crafted to perfection.", href: "#emerald" }
           ].map((item, idx) => (
             <div className="card" key={idx}>
-              <img src={item.src} alt={item.title} />
+              <LazyImage src={item.src} alt={item.title} />
               <h3>{item.title}</h3>
               <p>{item.text}</p>
               <a href={item.href}>Discover</a>
@@ -79,7 +80,7 @@ function BridalPage() {
         </div>
         <div className="jewels-content">
           <div className="jewel-card">
-            <img src="Khant_images/hand.png" alt="Bridal Jewels" className="jewel-image" />
+            <LazyImage src="Khant_images/hand.png" alt="Bridal Jewels" className="jewel-image" />
             <div className="jewel-details">
               <h3>Bridal Jewels</h3>
               <p>Necklaces, earrings, and bracelets crafted to perfection.</p>
@@ -87,7 +88,7 @@ function BridalPage() {
             </div>
           </div>
           <div className="jewel-card">
-            <img src="Khant_images/last.webp" alt="Tiara Collection" className="jewel-image" />
+            <LazyImage src="Khant_images/last.webp" alt="Tiara Collection" className="jewel-image" />
             <div className="jewel-details">
               <h3>Tiara Collection</h3>
               <p>Grace and luxury for your special day.</p>
@@ -99,7 +100,7 @@ function BridalPage() {
 
       <section id="guide" className="section bridal-guide-section">
         <div className="guide-image">
-          <img src="Khant_images/couple.png" alt="Bridal Guide" />
+          <LazyImage src="Khant_images/couple.png" alt="Bridal Guide" />
         </div>
         <div className="guide-text">
           <h2>The Hexa Vision Bridal Guide</h2>
@@ -115,7 +116,7 @@ function BridalPage() {
           <a href="#locations" className="button">Find a Salon</a>
         </div>
         <div className="store-img">
-          <img src="Khant_images/shop.webp" alt="Hexa Vision Store" />
+          <LazyImage src="Khant_images/shop.webp" alt="Hexa Vision Store" />
         </div>
       </section>
 

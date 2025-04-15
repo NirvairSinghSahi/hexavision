@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../Servicesstyles.css";
+import LazyImage from "../components/LazyImage";
 
 const ServicesPage = () => {
     const [activeForm, setActiveForm] = useState("appointment");
@@ -133,7 +134,7 @@ const ServicesPage = () => {
             {/* Client Services Section */}
             <section className="client-services-section">
                 <div className="image-container">
-                    <img
+                    <LazyImage
                         src="/Services/img1.jpg"
                         alt="Client Services"
                         className="responsive-image"
@@ -456,7 +457,7 @@ const ServicesPage = () => {
             {/* Decorative Line */}
             <div className="savoir-bottom-line">
                 <span className="golden-line"></span>
-                <img
+                <LazyImage
                     src="/Services/icon-rosette copy.svg"
                     alt="Rosette Icon"
                     className="rosette-icon"

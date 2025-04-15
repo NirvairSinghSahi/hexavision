@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import LazyImage from "./LazyImage";
 
 const JewelryCatalog = () => {
   const [jewelry, setJewelry] = useState([]);
@@ -33,7 +34,7 @@ const JewelryCatalog = () => {
         <div className="sub-collections">
           {jewelry.map((item) => (
             <div className="jewelry-card" key={item.id}>
-              <img src={item.image} alt={item.title} />
+              <LazyImage src={item.image} alt={item.title} />
               <h3>{item.title}</h3>
               <p className="jewelry-desc">{item.description}</p>
               <p className="jewelry-price">${item.price}</p>

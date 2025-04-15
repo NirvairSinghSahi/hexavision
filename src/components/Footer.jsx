@@ -1,4 +1,5 @@
 import React from "react";
+import LazyImage from "./LazyImage";
 
 const Footer = () => (
   <footer className="footer">
@@ -59,7 +60,7 @@ const Footer = () => (
               "youtube",
             ].map((platform, i) => (
               <a href="#" key={i}>
-                <img src={`/meteimages/${platform}.png`} alt={platform} />
+                <LazyImage src={`/meteimages/${platform}.png`} alt={platform} />
               </a>
             ))}
           </div>

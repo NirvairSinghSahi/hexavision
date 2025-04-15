@@ -1,9 +1,10 @@
 import React from "react";
+import LazyImage from "./LazyImage";
 
 const FindMyHexa = () => (
   <section className="find-my-hexa">
     <div className="find-my-hexa-content">
-      <img src="/meteimages/image 33.png" alt="Hexa Vision Salon" />
+      <LazyImage src="/meteimages/image 33.png" alt="Hexa Vision Salon" />
       <div className="find-my-hexa-text">
         <h2>Find My Hexa Vision</h2>
         <p>

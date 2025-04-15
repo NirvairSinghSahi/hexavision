@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../NirvairSinghSahi.css";
 import placekit from "@placekit/client-js";
 import Header from "../components/Header";
+import LazyImage from "../components/LazyImage";
 import Navbar from "../components/Navbar";
 
 function HomePage() {
@@ -154,7 +155,7 @@ const closeSidebar = () => {
             </div>
       <section className="house-section">
         <div className="image-container">
-          <img src={image("1-a3728410.png")} alt="The House of Hexa Vision" />
+          <LazyImage src={image("1-a3728410.png")} alt="The House of Hexa Vision" />
         </div>
         <div className="golden-line"></div>
         <h2>The House of Hexa Vision</h2>
@@ -180,7 +181,7 @@ const closeSidebar = () => {
         <section className="dual-section" key={i}>
           <div className="card">
             <div className="card-image-container">
-              <img src={image(["KingOfDiamonds.png", "Archives.png", "JewelertotheStars.png"][i])} alt="Card 1" />
+              <LazyImage src={image(["KingOfDiamonds.png", "Archives.png", "JewelertotheStars.png"][i])} alt="Card 1" />
             </div>
             <h2>{["King of Diamonds", "Rare Jewels of the World", "Jeweler to the Stars"][i]}</h2>
             <p>{["Having once owned more than one-third of the world's most famous gems, Hexa Vision was known as the 'King of Diamonds.", "Exquisite colored gemstones are one of the founding pillars of the House of Hexa Vision.", "As 'Jeweler to the Stars,' Hexa Vision has a long and storied Hollywood history."][i]}</p>
@@ -189,7 +190,7 @@ const closeSidebar = () => {
 
           <div className="card">
             <div className="card-image-container">
-              <img src={image(["History.png", "RareJewelsOfTheWorld.png", "News&Events.png"][i])} alt="Card 2" />
+              <LazyImage src={image(["History.png", "RareJewelsOfTheWorld.png", "News&Events.png"][i])} alt="Card 2" />
             </div>
             <h2>{["History", "Archives", "News & Events"][i]}</h2>
             <p>{["Hexa Vision was a face of many brilliant facets, much like the rare jewels that built the life around.", "The Hexa Vision archives are an invaluable resource to preserve the legacy of the House.", "Discover the latest news and information about the House’s global events."][i]}</p>
@@ -201,7 +202,7 @@ const closeSidebar = () => {
       {["herolarged_l1_house_7.png", "herolarged_l1_house_8.jpg", "herolarged_l1_house_9.png"].map((img, index) => (
         <section className="individual-section" key={img}>
           <div className="individual-image-container">
-            <img src={image(img)} alt="Individual" />
+            <LazyImage src={image(img)} alt="Individual" />
           </div>
           <div className="individual-content">
             <h2>{["Our Stones", "Our Craftsmanship", "Our Design"][index]}</h2>
@@ -231,7 +232,7 @@ const closeSidebar = () => {
   <div className="art-grid">
     {designArt.map((item) => (
       <div key={item.id} className="art-card">
-        <img src={item.image} alt={item.title} style={{ width: "100%", borderRadius: "8px" }} />
+        <LazyImage src={item.image} alt={item.title} style={{ width: "100%", borderRadius: "8px" }} />
         <h4>{item.title}</h4>
         <p style={{ fontSize: "14px", color: "#555" }}>{item.artist}</p>
       </div>
@@ -273,7 +274,7 @@ const closeSidebar = () => {
   <div className="jewelry-grid">
     {jewelryItems.map((item) => (
       <div key={item.id} className="jewelry-card">
-        <img src={item.image} alt={item.title} style={{ width: "150px" }} />
+        <LazyImage src={item.image} alt={item.title} style={{ width: "150px" }} />
         <h4>{item.title}</h4>
         <p>${item.price}</p>
         <p>{item.description}</p>
@@ -284,12 +285,12 @@ const closeSidebar = () => {
 
           </div>
           <div className="savoir-image-container">
-            <img src={image("sbs_l1_house_10.png")} alt="Savoir-Faire" />
+            <LazyImage src={image("sbs_l1_house_10.png")} alt="Savoir-Faire" />
           </div>
         </div>
         <div className="savoir-bottom-line">
           <span className="golden-line"></span>
-          <img src={image("icon-rosette.svg")} alt="Rosette Icon" className="rosette-icon" />
+          <LazyImage src={image("icon-rosette.svg")} alt="Rosette Icon" className="rosette-icon" />
           <span className="golden-line"></span>
         </div>
       </section>
@@ -297,7 +298,7 @@ const closeSidebar = () => {
       <section className="hexa-vision-section">
         <div className="hexa-vision-container">
           <div className="hexa-vision-image-container">
-            <img src={image("find-my-harry-winston.png")} alt="Find My Hexa Vision" />
+            <LazyImage src={image("find-my-harry-winston.png")} alt="Find My Hexa Vision" />
           </div>
           <div className="hexa-vision-content">
             <h2>Find My Hexa Vision</h2>
@@ -405,19 +406,19 @@ const closeSidebar = () => {
                   <h3>FOLLOW US</h3>
                   <div className="social-icons">
                     <a href="https://www.facebook.com/story.php/?story_fbid=1670602513233142&id=1670578309902229&_rdr">
-                      <img src={image("facebook.png")} alt="Facebook" />
+                      <LazyImage src={image("facebook.png")} alt="Facebook" />
                     </a>
                     <a href="https://www.instagram.com/hexavision_enhancement/">
-                      <img src={image("instagram.png")} alt="Instagram" />
+                      <LazyImage src={image("instagram.png")} alt="Instagram" />
                     </a>
                     <a href="https://x.com/i/flow/login?redirect_after_login=%2Fhexacc">
-                      <img src={image("twitter.png")} alt="Twitter" />
+                      <LazyImage src={image("twitter.png")} alt="Twitter" />
                     </a>
                     <a href="https://www.linkedin.com/company/joinhexa">
-                      <img src={image("linkedin.png")} alt="LinkedIn" />
+                      <LazyImage src={image("linkedin.png")} alt="LinkedIn" />
                     </a>
                     <a href="https://www.youtube.com/channel/UC98o6FhZ1cfsNxGN3Cf_0bQ">
-                      <img src={image("youtube.png")} alt="YouTube" />
+                      <LazyImage src={image("youtube.png")} alt="YouTube" />
                     </a>
                   </div>
                 </div>

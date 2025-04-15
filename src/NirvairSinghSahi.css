@@ -167,12 +167,16 @@
 /* Dual Section Card Styles */
 .dual-section {
   display: flex;
+  align-items: flex-start;
   flex-wrap: wrap;
   justify-content: space-evenly;
   gap: 30px;
   padding: 40px 20px;
 }
 .card {
+  height: auto;
+  display: flex;
+  flex-direction: column;
   flex: 1 1 45%;
   background-color: #fff;
   border-radius: 8px;
@@ -212,6 +216,16 @@
   line-height: 1.6;
   margin-bottom: 15px;
 }
+.card-extra-info {
+  margin-top: 1rem;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .discover-link {
   font-weight: bold;
   color: #d3a35e;

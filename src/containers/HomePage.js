@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../NirvairSinghSahi.css";
+import placekit from "@placekit/client-js";
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
 
@@ -11,6 +12,28 @@ const [showJewelry, setShowJewelry] = useState(false);
 const [designArt, setDesignArt] = useState([]);
 const [loadingDesign, setLoadingDesign] = useState(false);
 const [showDesignArt, setShowDesignArt] = useState(false);
+const [showSalonSearch, setShowSalonSearch] = useState(false);
+const [suggestions, setSuggestions] = useState([]);
+const [selectedAddress, setSelectedAddress] = useState("");
+const [nearbySalons, setNearbySalons] = useState([]);
+
+
+const pk = placekit('pk_k0NDqBAbNtU7Jg/mOtHCZwb/jbw/ZvvLuXFQmPGjT60='); 
+const handleAddressInput = async (value) => {
+  setSelectedAddress(value);
+  if (value.length < 3) {
+    setSuggestions([]);
+    return;
+  }
+  try {
+    const results = await pk.search(value);
+    setSuggestions(results);
+  } catch (err) {
+    console.error("Autocomplete error:", err);
+  }
+};
+
+
 
 
   useEffect(() => {
@@ -78,6 +101,27 @@ const closeSidebar = () => {
       setLoadingDesign(false);
       setShowDesignArt(true);
     }
+  };
+  
+  const simulateNearbySalons = (address) => {
+    const dummySalons = [
+      {
+        name: "Hexa Beauty Lounge",
+        address: `${address}, Suite 101`,
+        phone: "416-555-1234"
+      },
+      {
+        name: "Golden Touch Salon",
+        address: `${address}, 2nd Floor`,
+        phone: "416-555-5678"
+      },
+      {
+        name: "Elite Hair & Spa",
+        address: `${address}, Unit B`,
+        phone: "416-555-9101"
+      }
+    ];
+    setNearbySalons(dummySalons);
   };
   
 
@@ -165,21 +209,25 @@ const closeSidebar = () => {
             <p>{["Even every Hexa Vision jewel begins with a diamond or colored gemstone of exceptional quality...",
                   "At Hexa Vision, craftsmanship is a deeply cherished value. Each piece is expertly created...",
                   "The House of Hexa Vision has built a legacy defined by extraordinary jewelry and timepieces..."][index]}</p>
-            <button
-  className="discover-btn"
-  onClick={() => {
-    if (showDesignArt) {
-      setShowDesignArt(false);
-    } else {
-      fetchDesignArt();
-    }
-  }}
->
-  {showDesignArt ? "Hide Art" : "DISCOVER"}
-</button>
-{loadingDesign && <p>Loading design inspirations...</p>}
+            {index === 2 && (
+  <button
+    className="discover-btn"
+    onClick={() => {
+      if (showDesignArt) {
+        setShowDesignArt(false);
+      } else {
+        fetchDesignArt();
+      }
+    }}
+  >
+    {showDesignArt ? "Hide Art" : "DISCOVER"}
+  </button>
+)}
 
-{showDesignArt && (
+{loadingDesign && <div className="loader"></div>}
+
+
+{index === 2 && showDesignArt && (
   <div className="art-grid">
     {designArt.map((item) => (
       <div key={item.id} className="art-card">
@@ -190,6 +238,7 @@ const closeSidebar = () => {
     ))}
   </div>
 )}
+
 
 
           </div>
@@ -256,7 +305,64 @@ const closeSidebar = () => {
               We look forward to welcoming you to the extraordinary world of Hexa
               Vision, where our legacy becomes yours.
             </p>
-            <a href="#" className="discover-btn">FIND A SALON</a>
+            <button
+  className="discover-btn"
+  onClick={() => setShowSalonSearch(!showSalonSearch)}
+>
+  {showSalonSearch ? "Hide Search" : "FIND A SALON"}
+</button>
+{showSalonSearch && (
+  <div className="salon-search">
+    <input
+      type="text"
+      placeholder="Enter your address..."
+      value={selectedAddress}
+      onChange={(e) => handleAddressInput(e.target.value)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          if (suggestions.length > 0) {
+            const first = suggestions[0];
+            setSelectedAddress(first.label);
+            setSuggestions([]);
+            simulateNearbySalons(first.label);
+          } else if (selectedAddress.trim() !== "") {
+            simulateNearbySalons(selectedAddress);
+
+          }
+        }
+      }}
+    />
+    {suggestions.length > 0 && (
+      <ul className="suggestion-list">
+        {suggestions.map((sugg) => (
+          <li key={sugg.id} onClick={() => {
+            setSelectedAddress(sugg.label);
+            setSuggestions([]);
+            simulateNearbySalons(sugg.label);
+          }}>
+            {sugg.label}
+          </li>
+        ))}
+      </ul>
+    )}
+     {nearbySalons.length > 0 && (
+            <div className="salon-results">
+              <h4>Nearby Salons:</h4>
+              <ul>
+                {nearbySalons.map((salon, index) => (
+                  <li key={index}>
+                    <strong>{salon.name}</strong><br />
+                    {salon.address}<br />
+                    <em>{salon.phone}</em>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+  </div>
+)}
+
           </div>
         </div>
       </section>

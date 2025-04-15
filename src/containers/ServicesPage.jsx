@@ -272,11 +272,11 @@ const ServicesPage = () => {
             </div>
             <div className="form-group">
               <label htmlFor="first-name">First Name</label>
-              <input type="text" id="first-name" name="first-name" />
+              <input type="text" id="first-name" name="first_name" />
             </div>
             <div className="form-group">
               <label htmlFor="last-name">Last Name</label>
-              <input type="text" id="last-name" name="last-name" />
+              <input type="text" id="last-name" name="last_name" />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email</label>
@@ -367,7 +367,7 @@ const ServicesPage = () => {
               <input
                 type="text"
                 id="first-name-assistance"
-                name="first-name-assistance"
+                name="first_name_assistance"
               />
             </div>
             <div className="form-group">
@@ -375,7 +375,7 @@ const ServicesPage = () => {
               <input
                 type="text"
                 id="last-name-assistance"
-                name="last-name-assistance"
+                name="last_name_assistance"
               />
             </div>
             <div className="form-group">

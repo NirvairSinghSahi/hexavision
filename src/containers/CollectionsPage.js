@@ -77,41 +77,25 @@ const CollectionsPage = () => {
     },
   ];
 
-  const openSidebar = () => {
-    document.getElementById("sidebar").style.width = "250px";
-  };
-  
-  const closeSidebar = () => {
-    document.getElementById("sidebar").style.width = "0";
-  };
+  const openSidebar = () => setSidebarOpen(true);
+  const closeSidebar = () => setSidebarOpen(false);
 
   return (
     <>
-      <Header openSidebar={() => setSidebarOpen(true)} />
+      <Header openSidebar={openSidebar} />
       <Navbar />
-      
-            {/* Mobile Header */}
-            <header className="mobile-header">
-                <h1>HEXA VISION</h1>
-                <span
-                    className="mobile-menu-icon"
-                    onClick={() => openSidebar()}
-                >
-                    &#9776;
-                </span>
-            </header>
 
-            {/* Sidebar */}
-            <div id="sidebar" className="sidebar">
-                <span className="close-btn" onClick={() => closeSidebar()}>
-                    &times;
-                </span>
-                <a href="/">THE HOUSE</a>
-                <a href="/collections">HIGH JEWELRY</a>
-                <a href="/engagement">ENGAGEMENT & BRIDAL</a>
-                <a href="/watches">WATCHES</a>
-                <a href="/services">SERVICES</a>
-            </div>
+      {/* Mobile Header */}
+      <header className="mobile-header">
+        <h1>HEXA VISION</h1>
+        <span className="mobile-menu-icon" onClick={openSidebar}>
+          &#9776;
+        </span>
+      </header>
+
+      {/* Sidebar Component */}
+      <Sidebar isOpen={sidebarOpen} closeSidebar={closeSidebar} />
+
       <Showcase />
       <Suspense fallback={<div>Loading jewelry...</div>}>
         <JewelryCatalog />

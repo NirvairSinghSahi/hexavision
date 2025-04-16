@@ -497,3 +497,12 @@ body {
   background-color: #d3a35e;
   margin: 10px auto;
 }
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}
+
+.fade-out {
+  opacity: 0;
+}

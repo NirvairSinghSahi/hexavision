@@ -1,70 +1,155 @@
-# Getting Started with Create React App
+# 💎 Hexa Vision
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hexa Vision is a luxury jewelry showcase website built using React and Next.js. It reflects elegance, structured design, and dynamic content. Each page highlights a specific product category or brand feature, providing a smooth and responsive user experience. 
+## 👨‍👩‍👦 Team Members
 
-## Available Scripts
+- Nirvair Singh Sahi  
+- Mete Unal  
+- Amir Alipour  
+- Khant Ti KYi  
+- Tien Trung Ngo
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📁 Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+hexavision-master/
+│
+├── components/           # Reusable UI components like cards, headers, etc.
+├── pages/                # Each route/page for the app (Home, Watches, etc.)
+├── public/               # Static assets (images, logos)
+│   └── Nirvair_Singh_Sahi_Images/
+├── styles/               # CSS files and modules
+├── README.md             # This file
+├── package.json          # Dependency management
+└── next.config.js        # Next.js config
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🚀 Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### ✅ Prerequisites
+- Node.js (v16 or higher)
+- npm
 
-### `npm run build`
+### 🛠️ Installation Steps
+```bash
+git clone https://github.com/your-username/hexavision.git
+cd hexavision
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### ▶️ Running the App
+```bash
+npm run dev
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Then visit `http://localhost:3000` in your browser.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🌐 Deployed Site
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+*Link will be added once deployed on Vercel or GitHub Pages.*
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🧰 Tech Stack
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Framework:** Next.js (React)
+- **Language:** JavaScript (ES6+)
+- **Styling:** CSS Modules & Global CSS
+- **API Integration:** useEffect & useState Hooks
+- **Design:** Responsive layout with modern visuals
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📄 Pages Overview
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| Page              | Description                                                                 |
+|------------------|-----------------------------------------------------------------------------|
+| **Home**          | Main landing page with navbar and preview of all categories                |
+| **The House**     | Brand's history and mission, styled with text and image layout             |
+| **High Jewelry**  | Jewelry items mapped dynamically using `useState`                          |
+| **Engagement**    | Engagement and bridal collection display                                   |
+| **Watches**       | Showcase of luxury watches using card layout                               |
+| **Services**      | Brand services and post-purchase support                                   |
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 📬 EmailJS Integration
 
-### Analyzing the Bundle Size
+We integrated **EmailJS** in the Services page to allow users to send emails directly from the frontend. A form is displayed where users can submit their name, email, and message. When the form is submitted, `emailjs.sendForm()` is triggered with our service ID, template ID, and public key.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Steps Used:**
+1. Installed EmailJS with `npm install @emailjs/browser`
+2. Imported EmailJS and used a `ref` for the form
+3. Configured `emailjs.sendForm()` in the `onSubmit` handler
+4. Success and error messages are logged in the console
 
-### Making a Progressive Web App
+**Code Example:**
+```js
+import emailjs from '@emailjs/browser';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+const sendEmail = (e) => {
+  e.preventDefault();
+  emailjs.sendForm('service_id', 'template_id', formRef.current, 'public_key')
+    .then((result) => {
+        console.log('Email sent:', result.text);
+    }, (error) => {
+        console.error('Failed to send email:', error.text);
+    });
+};
+```
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🌐 APIs Used
 
-### Deployment
+| API Name                         | Endpoint Example                                                    | Purpose                                           |
+|----------------------------------|----------------------------------------------------------------------|---------------------------------------------------|
+| Fake Store API                   | https://fakestoreapi.com/products/category/jewelery                 | Fetch sample jewelry data                        |
+| JSONPlaceholder                  | https://jsonplaceholder.typicode.com/posts                          | Dummy blog/review content                        |
+| Unsplash API                     | https://api.unsplash.com/search/photos?query=watches                | Fetch royalty-free watch images                 |
+| Lorem Picsum                     | https://picsum.photos/200/300                                       | Placeholder/filler images for layout             |
+| CoinGecko API                    | https://api.coingecko.com/api/v3/simple/price?ids=gold&vs_currencies=usd | Simulate dynamic gold price display             |
+| WeatherAPI (for Services ideas) | https://api.weatherapi.com/v1/current.json?q=Toronto&key=API_KEY    | Hypothetical use: Display weather-dependent services |
+| Genderize API                    | https://api.genderize.io/?name=taylor                               | Hypothetical use in personalization              |
+| EmailJS API                      | https://www.emailjs.com/                                            | Send emails directly from frontend contact forms |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## 🔄 Sample API Fetch (React `useEffect` Example)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```js
+useEffect(() => {
+  fetch('https://fakestoreapi.com/products/category/jewelery')
+    .then(res => res.json())
+    .then(data => setProducts(data))
+    .catch(err => console.error('API Error:', err));
+}, []);
+```
+
+---
+
+
+## 📌 Key Features
+
+- Responsive layout using Flexbox and CSS Modules
+- Dynamic card rendering with `useState`
+- Modular components for maintainability
+- Mobile-friendly header/menu with SVG icons
+- Multiple public APIs used for testing and enhancement
+
+---
+
+## 🔐 License
+
+This project was developed as part of the **CPAN-144 Final Project Assignment** at Humber College. It demonstrates advanced front-end development concepts using React and Next.js.
+
+---
+
+
+

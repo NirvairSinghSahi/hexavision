@@ -52,7 +52,7 @@ Then visit `http://localhost:3000` in your browser.
 
 ## 🌐 Deployed Site
 
-*Link will be added once deployed on Vercel or GitHub Pages.*
+https://hexavision.vercel.app/
 
 ---
 
